@@ -7,8 +7,12 @@ import { nanoid } from "nanoid";
 
 function App(props) {
   const [notes, setNotes] = useState(props.notes);
+  function deleteNote(id) {
+    const remainingNotes = notes.filter((note) => id !== note.id);
+    setNotes(remainingNotes);
+  }
   const notesList = notes.map((note) => (
-    <Note id={note.id} name={note.name} key={note.id} />
+    <Note id={note.id} name={note.name} key={note.id} deleteNote={deleteNote} />
   ));
   const notesNoun = notesList.length !== 1 ? "notes" : "note";
   const headingText = `You have ${notesList.length} ${notesNoun}`;

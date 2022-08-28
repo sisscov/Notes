@@ -15,8 +15,13 @@ export default function Note(props) {
         <Button type="button" className="btn" variant="secondary">
           Edit<span className="visually-hidden"></span>
         </Button>
-        <Button type="button" className="btn delete" variant="danger">
-          Delete<span className="visually-hidden"></span>
+        <Button
+          type="button"
+          className="btn delete"
+          variant="danger"
+          onClick={() => props.deleteNote(props.id)}
+        >
+          Delete<span className="visually-hidden">{props.name}</span>
         </Button>
       </ButtonGroup>
     </li>
