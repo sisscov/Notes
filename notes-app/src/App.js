@@ -12,13 +12,28 @@ function App(props) {
     setNotes(remainingNotes);
   }
   const notesList = notes.map((note) => (
-    <Note id={note.id} name={note.name} key={note.id} deleteNote={deleteNote} />
+    <Note
+      id={note.id}
+      name={note.name}
+      key={note.id}
+      deleteNote={deleteNote}
+      editNote={editNote}
+    />
   ));
   const notesNoun = notesList.length !== 1 ? "notes" : "note";
   const headingText = `You have ${notesList.length} ${notesNoun}`;
   function addNote(name) {
     const newNote = { id: `note-${nanoid()}`, name };
     setNotes([...notes, newNote]);
+  }
+  function editNote(id, editedNote) {
+    const editedNotesList = notes.map((note) => {
+      if (id === note.id) {
+        return { ...note, name: editedNote };
+      }
+      return note;
+    });
+    setNotes(editedNotesList);
   }
   return (
     <div className="container">
