@@ -36,13 +36,17 @@ function App(props) {
     setNotes(editedNotesList);
   }
   return (
-    <div className="container">
-      <h1 className="title">Your notes</h1>
-      <Form addNote={addNote} />
-      <h2>{headingText}</h2>
-      <ul role="list" className="notes-list" aria-labelledby="notes-list">
-        {notesList}
-      </ul>
+    <div className="bg">
+      <div className="container">
+        <h1 className="title">Your notes</h1>
+        <Form addNote={addNote} />
+        <div className="notes-container">
+          <h2 className="heading-text">{headingText}</h2>
+          <ul role="list" className="notes-list" aria-labelledby="notes-list">
+            {notesList}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }

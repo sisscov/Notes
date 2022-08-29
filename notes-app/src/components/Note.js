@@ -9,19 +9,29 @@ export default function Note(props) {
   function handleChange(e) {
     setEditedNote(e.target.value);
   }
+
   function handleSubmit(e) {
     e.preventDefault();
+    emptyNote();
     props.editNote(props.id, editedNote);
     setEditedNote("");
     setEditing(false);
   }
+
+  function emptyNote() {
+    if (editedNote === "") {
+      alert("Your note is empty. Write something or click cancel");
+      handleSubmit.preventDefault();
+    }
+  }
+
   const editingTemplate = (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor={props.id}>Edit your note</label>
         <input
           className="edit-note"
-          id="{props.id}"
+          id={props.id}
           type="text"
           value={editedNote}
           onChange={handleChange}
@@ -45,6 +55,7 @@ export default function Note(props) {
       </div>
     </form>
   );
+  
   const viewTemplate = (
     <div className="note-list">
       <div className="note">

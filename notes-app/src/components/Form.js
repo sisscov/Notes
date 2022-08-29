@@ -10,13 +10,19 @@ function Form(props) {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    emptyNote();
     props.addNote(name);
     //clear input after form submit
     setName("");
   }
-
+  function emptyNote() {
+    if (name === "") {
+      alert("Your note is empty. Write something");
+      handleSubmit.preventDefault();
+    }
+  }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-add">
       <label htmlFor="new-note" className="label-add">
         Add your notes below
       </label>
