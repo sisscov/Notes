@@ -15,7 +15,12 @@ code {
 ul {
   list-style: none;
 }
-.heading-text{
+textarea {
+  background-color: #efe1d7;
+  opacity: 0.8;
+  border-radius: 8px;
+}
+.heading-text {
   margin-bottom: 3%;
 }
 .bg {
@@ -28,11 +33,15 @@ ul {
   background-position: center;
 }
 .container {
+  width: 75vw !important;
   display: block;
   justify-content: center;
   align-items: center;
   max-height: 50vh;
-  margin-top: 7%;
+  margin-top: 5%;
+}
+.title {
+  margin-bottom: 2%;
 }
 .form-add {
   display: inline-block;
@@ -42,9 +51,10 @@ ul {
   margin-bottom: 4%;
 }
 .input-add {
-  min-width: 35vw;
-  max-width: 40vw;
+  min-width: 40vw;
+  max-width: 45vw;
   max-height: 12vh;
+  min-height: 4vh;
   width: 100%;
 }
 .notes-container {
@@ -56,16 +66,11 @@ ul {
   padding: 0;
   min-width: 25vw;
 }
-.title {
-  display: flex;
-  margin: auto;
-  margin-bottom: 2%;
-}
+
 .label-note,
 .edit-note {
-  display: inherit;
-  align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: #efe1d7;
+  border: #000 1px solid;
   line-height: 1.01567;
   font-weight: 300;
   padding: 0.8rem;
@@ -81,16 +86,54 @@ ul {
   box-shadow: 5px 5px #000;
 }
 .edit-note {
-  border: none;
+  border: #000 1px solid;
 }
+/*#region buttons */
 .btn {
-  margin-top: 5%;
-  margin-bottom: 15%;
+  margin-top: 2%;
+  margin-bottom: 10%;
+  background-color: #ad8260 !important;
+  border-color: black !important;
 }
 .btn-add {
   width: 40%;
   align-items: center;
-  margin: 0 0 7% 0;
-  height: 3.6vh;
-  cursor: pointer;
+  margin: 0 0 5% 0;
+  padding-top: 0 !important;
+  height: 4vh;
+  background-color: #ad8260 !important;
+  border: none !important;
 }
+.btn-delete,
+.btn-cancel {
+  background-color: #d3664d !important;
+  border-color: black !important;
+}
+/*#endregion*/
+/*#region media */
+@media only screen and (max-width: 1700px) {
+  .container {
+    margin: 16vh 0 0 0;
+  }
+  .notes-container {
+    max-height: 42vh;
+  }
+}
+@media only screen and (max-width: 1550px) {
+  .container {
+    margin: 14vh 0 0 0;
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .container {
+    margin: 18vh 0 0 0;
+  }
+  .notes-container {
+    max-height: 30vh;
+  }
+  .input-add {
+    min-width: 45vw;
+    max-width: 50vw;
+  }
+}
+/*#endregion*/

@@ -6,15 +6,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Note(props) {
   const [isEditing, setEditing] = useState(false);
   const [editedNote, setEditedNote] = useState("");
+
   function handleChange(e) {
     setEditedNote(e.target.value);
   }
-
+  function handleCancel() {
+    setEditing(false);
+    setEditedNote(props.name);
+  }
+  function handleEdit() {
+    setEditing(true);
+    setEditedNote(props.name);
+  }
   function handleSubmit(e) {
     e.preventDefault();
     emptyNote();
     props.editNote(props.id, editedNote);
-    setEditedNote("");
     setEditing(false);
   }
 
@@ -41,13 +48,13 @@ export default function Note(props) {
         <ButtonGroup>
           <Button
             type="button"
-            className="btn"
+            className="btn-cancel"
             variant="secondary"
-            onClick={() => setEditing(false)}
+            onClick={() => handleCancel()}
           >
             Cancel<span className="visually-hidden">editing {props.name}</span>
           </Button>
-          <Button type="submit" className="btn save" variant="success">
+          <Button type="submit" className="btn-save" variant="success">
             Save
             <span className="visually-hidden">Save note as {props.name}</span>
           </Button>
@@ -55,7 +62,7 @@ export default function Note(props) {
       </div>
     </form>
   );
-  
+
   const viewTemplate = (
     <div className="note-list">
       <div className="note">
@@ -70,17 +77,16 @@ export default function Note(props) {
             type="button"
             className="btn"
             variant="secondary"
-            onClick={() => setEditing(true)}
+            onClick={() => handleEdit()}
           >
-            Edit<span className="visually-hidden">props.name</span>
+            Edit<span className="visually-hidden">{props.name}</span>
           </Button>
           <Button
             type="button"
-            className="btn delete"
-            variant="danger"
+            className="btn-delete"
             onClick={() => props.deleteNote(props.id)}
           >
-            Delete<span className="visually-hidden">{props.name}</span>
+            🗑️<span className="visually-hidden">{props.name}</span>
           </Button>
         </ButtonGroup>
       </div>
