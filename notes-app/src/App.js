@@ -11,7 +11,7 @@ function App(props) {
     const remainingNotes = notes.filter((note) => id !== note.id);
     setNotes(remainingNotes);
   }
-  const notesList = notes.map((note) => (
+  const notesList = notes?.map((note) => (
     <Note
       id={note.id}
       name={note.name}
@@ -20,8 +20,8 @@ function App(props) {
       editNote={editNote}
     />
   ));
-  const notesNoun = notesList.length !== 1 ? "notes" : "note";
-  const headingText = `You have ${notesList.length} ${notesNoun}`;
+  const notesNoun = notesList?.length !== 1 ? "notes" : "note";
+  const headingText = `You have ${notesList?.length} ${notesNoun}`;
   function addNote(name) {
     const newNote = { id: `note-${nanoid()}`, name };
     setNotes([...notes, newNote]);
